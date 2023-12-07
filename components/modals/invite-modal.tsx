@@ -68,6 +68,7 @@ export const InviteModal = () => {
                             className="bg-zinc-300/50 border-0 focus-visible:ring-0 text-black
                             focus-visible:ring-offset-0"
                             value={inviteUrl}
+                            readOnly
                         />
                         <Button
                             disabled={isLoading}
@@ -80,8 +81,8 @@ export const InviteModal = () => {
                     <Button 
                         onClick={onNew}
                         disabled={isLoading}
-                        variant="link" 
-                        size="sm" 
+                        variant="link"
+                        size="sm"
                         className="text-xs text-zinc-500 mt-4"
                     >
                         Generate a new link

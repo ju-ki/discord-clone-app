@@ -10,10 +10,11 @@ interface ServerSidebarProps {
 
 export const ServerSidebar = async({serverId}:ServerSidebarProps) => {
     const profile = await currentProfile();
+    console.log(profile);
 
     if(!profile)
     {
-        return redirect("")
+        return redirect("/");
     }
 
     const server = await db.server.findUnique({
@@ -37,24 +38,27 @@ export const ServerSidebar = async({serverId}:ServerSidebarProps) => {
         }
     });
 
-    const textChannels = server?.channels.filter((channel) => channel.type === ChannelType.TEXT);
-    const videoChannels = server?.channels.filter((channel) => channel.type === ChannelType.VIDEO);
-    const audioChannels = server?.channels.filter((channel) => channel.type === ChannelType.AUDIO);
+    console.log(server);
+    
 
-    const members= server?.members.filter((member) => member.profileId !== profile.id);
+    // const textChannels = server?.channels.filter((channel) => channel.type === ChannelType.TEXT);
+    // const videoChannels = server?.channels.filter((channel) => channel.type === ChannelType.VIDEO);
+    // const audioChannels = server?.channels.filter((channel) => channel.type === ChannelType.AUDIO);
 
-    if(!server){
-        return redirect("/");
-    }
+    // const members= server?.members.filter((member) => member.profileId !== profile.id);
 
-    const role = server.members.find((member) => member.profileId === profile.id)?.role;
+    // if(!server){
+    //     return redirect("/");
+    // }
+
+    // const role = server.members.find((member) => member.profileId === profile.id)?.role;
 
     return (
         <div className="flex flex-col h-full text-primary w-full dark:bg-[#2B2D31] bg-[#F2F2F5]">
-            <ServerHeader
+            {/* <ServerHeader
                 server={server}
                 role={role}
-            />
+            /> */}
         </div>
     )
 }

@@ -28,8 +28,10 @@ model Server {
   name String
   imageUrl String @db.Text
   inviteCode String @unique
+
   profileId String
-  profie Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
   members Member[]
   channels Channel[]
 
@@ -49,8 +51,8 @@ model Member {
   id String @id @default(uuid())
   role MemberRole @default(GUEST)
 
-  profileId String
-  profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  profileId String?
+  profile Profile? @relation(fields: [profileId], references: [id], onDelete: Cascade)
 
   serverId String
   server Server @relation(fields: [serverId], references: [id], onDelete: Cascade)
@@ -62,22 +64,25 @@ model Member {
   @@index([serverId])
 }
 
-
 enum ChannelType {
   TEXT
   AUDIO
   VIDEO
 }
 
-
 model Channel {
   id String @id @default(uuid())
   name String
   type ChannelType @default(TEXT)
+
   profileId String
   profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
   serverId String
-  server Server  @relation(fields: [serverId], references: [id], onDelete: Cascade)
+  server Server @relation(fields: [serverId], references: [id], onDelete: Cascade)
+
+  // messages Message[]
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 

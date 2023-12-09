@@ -12,7 +12,6 @@ import { Button } from "../ui/button";
 import { Check, Copy, RefreshCcw } from "lucide-react";
 import { useOrigin } from "@/app/hooks/use-origin";
 import { useState } from "react";
-import { log } from "console";
 import axios from "axios";
 
 

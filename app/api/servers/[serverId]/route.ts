@@ -23,8 +23,7 @@ export async function PATCH(
                 profileId:profile.id
             },
             data:{
-
-                name, 
+                name,
                 imageUrl
             }
         })

@@ -6,6 +6,7 @@ import ServerHeader from "@/components/server/server-header";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import ServerSearch from "./server-search";
 import { Hash, Mic, ShieldAlert, ShieldCheck, Video } from "lucide-react";
+import { channel } from "diagnostics_channel";
 
 interface ServerSidebarProps {
     serverId:string;
@@ -75,39 +76,39 @@ export const ServerSidebar = async({serverId}:ServerSidebarProps) => {
                     <ServerSearch
                         data={[
                             {
-                                label:"Text Channel",
-                                type:"channel",
+                                label: "Text Channels",
+                                type: "channel",
                                 data: textChannels?.map((channel) => ({
                                     id:channel.id,
                                     name:channel.name,
-                                    iconMap:iconMap[channel.type],
+                                    icon:iconMap[channel.type]
                                 }))
                             },
                             {
-                                label:"Video Channel",
-                                type:"channel",
+                                label: "Video Channels",
+                                type: "channel",
                                 data: videoChannels?.map((channel) => ({
                                     id:channel.id,
                                     name:channel.name,
-                                    iconMap:iconMap[channel.type],
+                                    icon:iconMap[channel.type]
                                 }))
                             },
                             {
-                                label:"Voice Channel",
-                                type:"channel",
-                                data: audioChannels?.map((channel) => ({
+                                label: "Voice Channels",
+                                type: "channel",
+                                data: videoChannels?.map((channel) => ({
                                     id:channel.id,
                                     name:channel.name,
-                                    iconMap:iconMap[channel.type],
+                                    icon:iconMap[channel.type]
                                 }))
                             },
                             {
-                                label:"Voice Channel",
-                                type:"channel",
-                                data: audioChannels?.map((channel) => ({
-                                    id:channel.id,
-                                    name:channel.name,
-                                    iconMap:iconMap[channel.type],
+                                label: "Members",
+                                type: "member",
+                                data: members?.map((member) => ({
+                                    id:member.id,
+                                    name:member.profile.name,
+                                    icon:roleIconMap[member.role]
                                 }))
                             },
                         ]}

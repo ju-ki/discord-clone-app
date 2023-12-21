@@ -1,4 +1,5 @@
 import ChatHeader from "@/components/chat/chat-header";
+import ChatInput from "@/components/chat/chat-input";
 import { getOrCreateConversation } from "@/lib/conversation";
 import { currentProfile } from "@/lib/current-profile";
 import { db } from "@/lib/db";
@@ -54,6 +55,15 @@ const MemberIdPage = async({
                 serverId={params.serverId}
                 type="conversation"
             />
+            {/* <ChatInput
+                name={channel.name}
+                type="channel"
+                apiUrl="/api/socket/messages"
+                query={{
+                    channelId:channel.id,
+                    serverId:channel.serverId
+                }}
+            /> */}
         </div>
     );
 }

@@ -47,7 +47,6 @@ const ChatInput = ({
                 url:apiUrl,
                 query,
             });
-            console.log(url);
             await axios.post(url, values);
         }catch(err){
             console.log(err);

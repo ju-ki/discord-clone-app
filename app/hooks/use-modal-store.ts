@@ -4,7 +4,8 @@ import {create} from "zustand";
 export type ModalType = "createServer" | "editServer" |
                         "createChannel" | "invite" | "members"|
                         "leaveServer" | "deleteServer" |
-                        "deleteChannel" | "editChannel" | "messageFile";
+                        "deleteChannel" | "editChannel" | "messageFile" |
+                        "deleteMessage";
 
 interface ModelData{
     server?:Server;

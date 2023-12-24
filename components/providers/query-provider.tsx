@@ -12,7 +12,7 @@ export const QueryProvider = ({
 }) => {
     const [queryClient] = useState(() => new QueryClient());
     return (
-       <QueryClientProvider>
+       <QueryClientProvider client={queryClient}>
             {children}
        </QueryClientProvider> 
     )

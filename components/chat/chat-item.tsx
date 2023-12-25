@@ -41,7 +41,7 @@ const roleIconMap = {
 
 const formSchema = z.object({
     content: z.string().min(1),
-  });
+});
 
 
 export const ChatItem = ({
@@ -60,26 +60,26 @@ export const ChatItem = ({
     const params = useParams();
     const router = useRouter();
     const { onOpen } = useModal();
+    console.log("bbbaa");
+    console.log(currentMember.id);
 
     const onMemberClick = () => {
         if (member.id === currentMember.id) {
-          return;
+            return;
         }
-      
         router.push(`/servers/${params?.serverId}/conversations/${member.id}`);
-      }
-    
-      useEffect(() => {
+    }
+
+    useEffect(() => {
         const handleKeyDown = (event: any) => {
-          if (event.key === "Escape" || event.keyCode === 27) {
-            setIsEditing(false);
-          }
-        };
-    
-        window.addEventListener("keydown", handleKeyDown);
-    
+            if (event.key === "Escape" || event.keyCode === 27) {
+                setIsEditing(false);
+        }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
         return () => window.removeEventListener("keyDown", handleKeyDown);
-      }, []);
+    }, []);
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),

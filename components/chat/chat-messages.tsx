@@ -40,6 +40,7 @@ export const ChatMessages = ({
     type
 }:ChatMessagesProps) => {
     const queryKey = `chat:${chatId}`;
+
     const {
         data,
         fetchNextPage,

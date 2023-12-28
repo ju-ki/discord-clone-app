@@ -10,10 +10,11 @@ export const QueryProvider = ({
 }: {
     children:React.ReactNode;
 }) => {
+    //キャッシュ管理のために使用される
     const [queryClient] = useState(() => new QueryClient());
     return (
        <QueryClientProvider client={queryClient}>
             {children}
-       </QueryClientProvider> 
+       </QueryClientProvider>
     )
 }

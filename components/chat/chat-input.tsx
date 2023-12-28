@@ -43,10 +43,9 @@ const ChatInput = ({
         }
     });
 
-    const isLoading = form.formState.isSubmitting;
+    let isLoading = form.formState.isSubmitting;
 
     const onSubmit = async (values: z.infer<typeof formScheme>) => {
-        console.log(values);
         try{
             const url = queryString.stringifyUrl({
                 url:apiUrl,
@@ -79,12 +78,10 @@ const ChatInput = ({
                                     >
                                         <Plus className="tex-white  dark:text-[#31338]"/>
                                     </button>
-                                    <Input 
-                                        className="px-14 py-6 bg-zinc-200/90 dark:bg-zinc-700/75 border-none 
-                                        border-0 focus-visible:ring-0 focus-visible:ring-offset-0
-                                        text-zinc-600 dark:text-zinc-200"
-                                        disabled={isLoading}
-                                        placeholder={`Message ${type==="conversation" ? name : "#" + name}`}
+                                    <Input
+                                        readOnly={isLoading}
+                                        className="px-14 py-6 bg-zinc-200/90 dark:bg-zinc-700/75 border-none border-0 focus-visible:ring-0 focus-visible:ring-offset-0 text-zinc-600 dark:text-zinc-200"
+                                        placeholder={`Message ${type === "conversation" ? name : "#" + name}`}
                                         {...field}
                                     />
                                     <div className="absolute top-7 right-8">

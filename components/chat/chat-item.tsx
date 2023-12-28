@@ -103,8 +103,9 @@ export const ChatItem = ({
             url: `${socketUrl}/${id}`,
             query: socketQuery,
         });
-
+        console.log(url);
         await axios.patch(url, values);
+
 
         form.reset();
         setIsEditing(false);
@@ -117,7 +118,7 @@ export const ChatItem = ({
         form.reset({
             content: content,
         })
-    }, [content]);
+    }, [content, form]);
 
     return (
         <div className="relative group flex items-center hover:bg-black/5 p-4 transition w-full">
@@ -213,7 +214,6 @@ export const ChatItem = ({
                     )}
                 </div>
             </div>
-            {canDeleteMessage ? "aa" : "bb"}
             {canDeleteMessage && (
                 <div className="hidden group-hover:flex items-center gap-x-2 absolute p-1 -top-2 right-5 bg-white dark:bg-zinc-800 border rounded-sm">
                 {canEditMessage && (
